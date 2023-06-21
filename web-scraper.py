@@ -11,10 +11,12 @@ for x in range(1, 51):
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
     titles_found = soup.find_all('h3')
+    star_rating_finder = soup.find_all('p')
     products = soup.find_all('article', class_='product_pod')
     print(f"+Page: ", x)
     for product in titles_found:
         titles.append(product.text)
+        print(star_rating_finder)
         
     if browser.links.find_by_partial_text('next'):
         browser.links.find_by_partial_text('next').click()
